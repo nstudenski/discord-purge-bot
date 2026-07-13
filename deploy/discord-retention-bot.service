@@ -1,0 +1,16 @@
+[Unit]
+Description=Discord message-retention bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=discordbot
+WorkingDirectory=/opt/discord-retention-bot
+ExecStart=/usr/bin/node src/index.js
+EnvironmentFile=/opt/discord-retention-bot/.env
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
